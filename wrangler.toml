@@ -1,0 +1,30 @@
+name = "liquid-hydrogen-oxygen"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[env.production]
+name = "liquid-hydrogen-oxygen-prod"
+route = ""
+zone_id = ""
+
+[build.upload]
+format = "modules"
+main = "./server.ts"
+
+[[build.upload.rules]]
+type = "CompiledContentType"
+globs = ["**/*.wasm"]
+fallthrough = true
+
+[[build.upload.rules]]
+type = "Text"
+globs = ["**/*.html", "**/*.css"]
+fallthrough = true
+
+[[build.upload.rules]]
+type = "Data"
+globs = ["**/*"]
+fallthrough = true
